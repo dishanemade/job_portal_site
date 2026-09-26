@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #1d2b64, #f8cdda);
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: orange;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+ 
+  <h1>🎉 Welcome to Dashboard</h1>
+  <p>You have successfully logged in!</p>
+
+  <button onclick="logout()">Logout</button>
+
+  <script>
+  // 🔐 Check login
+  if (!localStorage.getItem("loggedIn")) {
+    window.location.href = "index.html";
+  }
+
+  // 👤 Show username
+  const username = localStorage.getItem("username");
+  document.getElementById("welcomeUser").innerText =
+    "Welcome, " + username + " 👋";
+
+  // 🚪 Logout
+  function logout() {
+    localStorage.clear();
+    window.location.href = "index.html";
+  }
+  </script>
+
+  <h2 id="welcomeUser"></h2>
+  <input type="text" placeholder="Search jobs..." id="search" onkeyup="searchJobs()">
+  <div id="job-list"></div>
+
+</body>
+</html>

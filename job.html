@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Details</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #1d2b64, #f8cdda);
+      color: white;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: orange;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="title"></h1>
+    <p id="company"></p>
+    <p id="location"></p>
+    <div id="description"></div>
+
+    <button onclick="applyJob()">Apply Now</button>
+
+  </div>
+
+<script>
+  const job = JSON.parse(localStorage.getItem("jobData"));
+
+  document.getElementById("title").innerText = job.title;
+  document.getElementById("company").innerText = "Company: " + job.company_name;
+  document.getElementById("location").innerText = "Location: " + job.candidate_required_location;
+  document.getElementById("description").innerHTML = job.description;
+
+  function applyJob() {
+    const job = JSON.parse(localStorage.getItem("jobData"));
+    window.open(job.url, "_blank");
+  }
+
+  document.getElementById("applyBtn").onclick = () => {
+    window.open(job.url, "_blank");
+  };
+
+  // 👇 ADD THIS HERE
+  function applyJob() {
+    alert("Application submitted ✅");
+  }
+</script>
+
+</body>
+</html>
